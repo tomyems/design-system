@@ -158,6 +158,15 @@
 
 {% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
 
+{% block main %}
+  <div class="hods-page__container hods-width-container">
+    {% block beforeContent %}{% endblock %}
+    <main class="govuk-main-wrapper {{ mainClasses }}" id="main-content" role="main"{% if mainLang %} lang="{{ mainLang }}"{% endif %}>
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+{% endblock %}
+
 {% if useAutoStoreData %}
   {% block footer %}
   <footer class="hods-footer" role="contentinfo">
